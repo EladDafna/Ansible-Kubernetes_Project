@@ -1,3 +1,4 @@
 # Ansible-Kubernetes_Project
 
-<img width="170" alt="image" src="https://github.com/user-attachments/assets/97b9d1be-83e1-4622-9e44-141ee5263d07">
+<img width="736" alt="Ansible_Diagrama_V1" src="https://github.com/user-attachments/assets/a4f7d652-bd90-439c-8f5e-06e81b7d01ac">
+
