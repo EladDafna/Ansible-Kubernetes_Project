@@ -1,0 +1,19 @@
+---
+# tasks file for configure_load_balancer
+- name: Install HAProxy on load balancer
+  apt:
+    name: haproxy
+    state: present
+
+- name: Configure HAProxy for load balancing
+  template:
+    src: haproxy_config.j2
+    dest: /etc/haproxy/haproxy.cfg
+  notify:
+    - Restart HAProxy
+
+- name: Start HAProxy service
+  service:
+    name: haproxy
+    state: started
+    enabled: yes

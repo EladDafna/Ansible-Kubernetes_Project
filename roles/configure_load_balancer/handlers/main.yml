@@ -1,0 +1,7 @@
+# handlers file for configure_load_balancer
+---
+- name: Restart HAProxy
+  service:
+    name: haproxy
+    state: restarted
+

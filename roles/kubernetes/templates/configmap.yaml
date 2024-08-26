@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: index-configmap
+  namespace: default
+data:
+  index.html: |
+    <!doctype html>
+    <html>
+    <head>
+    <title>t1</title>
+    </head>
+    <body>
+    <center>
+    <h1>This-is-New-lodaing By Elad!!</h1>
+    <p>------ Created by Ansible -----</p>
+    <p> This server ip: {{ ansible_all_ipv4_addresses }}</p>
+    <p> host name: {{ inventory_hostname }} </p>
+    <p> env = : {{ env }} </p>
+    <center>
+    </body>
+    </html>

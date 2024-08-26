@@ -1,0 +1,17 @@
+---
+- name: Wait for Nginx Pods to be in Running state
+  command: kubectl get pods -n default -l app=nginx
+  register: pod_status
+  until: "'Running' in pod_status.stdout"
+  retries: 6
+  delay: 20
+  delegate_to: "{{ ansible_host | default('localhost') }}"
+
+- name: Debug Nginx Pods status
+  debug:
+    msg: "Nginx Pod statuses: {{ pod_status.stdout }}"
+
+- name: Fail if Nginx Pods are not running
+  fail:
+    msg: "Nginx Pods are not in Running state. Current status: {{ pod_status.stdout }}"
+  when: "'Running' not in pod_status.stdout"

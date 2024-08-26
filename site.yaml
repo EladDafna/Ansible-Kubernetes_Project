@@ -1,0 +1,14 @@
+---
+- hosts: Frankfurt
+  become: yes
+  roles:
+    - docker
+    - cluster_kind
+    - kubernetes
+    - check_health
+
+
+- hosts: loadbalancer
+  become: yes
+  roles:
+    - configure_load_balancer

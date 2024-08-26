@@ -1,0 +1,31 @@
+# tasks file for cluster_kind
+---
+- name: Install Kubectl
+  get_url:
+    url: https://dl.k8s.io/release/v1.26.0/bin/linux/amd64/kubectl
+    dest: /usr/local/bin/kubectl
+    mode: '0755'
+
+- name: Download Kind
+  shell: "[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.23.0/kind-linux-amd64"
+  args:
+    executable: /bin/bash
+
+- name: Install Kind
+  shell: |
+    chmod +x ./kind
+    sudo mv ./kind /usr/local/bin/kind
+
+- name: Create Kubernetes Cluster with Kind
+  command: kind create cluster --name test2 --image kindest/node:v1.26.3 --config /home/ubuntu/Ansible/roles/kubernetes/templates/kind1.yaml
+
+- name: Create .kube directory if it doesn't exist
+  file:
+    path: /home/ubuntu/.kube
+    state: directory
+    mode: '0755'
+
+- name: Update kubeconfig for the new Kind cluster
+  shell: kind get kubeconfig --name test2 > /home/ubuntu/.kube/config
+  args:
+    executable: /bin/bash

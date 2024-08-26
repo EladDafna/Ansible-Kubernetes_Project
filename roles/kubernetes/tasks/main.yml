@@ -1,0 +1,17 @@
+---
+#task for kubernetes
+- name: Apply ConfigMap for index.html
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('file', '/home/ubuntu/Ansible/roles/kubernetes/templates/configmap.yaml') }}"
+
+- name: Apply Nginx Deployment
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('file', '/home/ubuntu/Ansible/roles/kubernetes/templates/nginx-deployment.yaml') }}"
+
+- name: Apply Nginx Service
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('file', '/home/ubuntu/Ansible/roles/kubernetes/templates/nginx-service.yaml') }}"
+

@@ -1,0 +1,6 @@
+#ubuntu ansible_host=35.159.17.190 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_ed25519
+[Frankfurt]
+ansible1 ansible_host=18.194.72.117 ansible_user=ubuntu env=production
+
+[loadbalancer]
+loadbalancer1 ansible_host=18.194.72.117 ansible_user=ubuntu
