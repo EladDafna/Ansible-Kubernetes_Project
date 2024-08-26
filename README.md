@@ -60,7 +60,7 @@ To set up this project on your local machine, follow these steps:
    - Ensure you have Ansible installed and configured properly.
    - Run the main playbook to set up the environment:
      ```bash
-     ansible-playbook -i inventory main.yml
+     ansible-playbook site.yaml
      ```
 
    **Note:** All other tools, including Docker, Kubernetes, Kind, Kubectl, and HAProxy, will be automatically installed by the Ansible roles.
